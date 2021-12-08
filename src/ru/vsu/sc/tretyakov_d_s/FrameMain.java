@@ -4,6 +4,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 
 import java.io.File;
+import java.io.PrintWriter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,9 +25,8 @@ public class FrameMain extends JFrame {
   private JButton buttonRandomInput;
   private JButton buttonSaveInputInfoFile;
   private JButton checkForOrderedSequence;
-  private JTextField value1;
-  private JTextField value2;
   private JTextField result;
+  private JButton saveTheAnswerToButton;
   private JButton buttonSaveOutputIntoFile;
   private JTable tableOutput;
   private JButton buttonReverseColumns;
@@ -129,6 +129,22 @@ public class FrameMain extends JFrame {
         }
       }
     });
+    saveTheAnswerToButton.addActionListener(actionEvent -> {
+      try {
+        if (fileChooserSave.showSaveDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
+          String file = fileChooserSave.getSelectedFile().getPath();
+          if (!file.toLowerCase().endsWith(".txt")) {
+            file += ".txt";
+          }
+          PrintWriter writer1 = new PrintWriter(file);
+          writer1.println(result.getText());
+          writer1.close();
+        }
+      } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Unable to save data to this file!", "Error",
+            JOptionPane.ERROR_MESSAGE);
+      }
+    });
   }
 
 
@@ -189,11 +205,18 @@ public class FrameMain extends JFrame {
     panelMain.add(buttonRandomInput, new GridConstraints(5, 2, 1, 1, GridConstraints.ANCHOR_CENTER,
         GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_FIXED,
         GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+    saveTheAnswerToButton = new JButton();
+    saveTheAnswerToButton.setText("Save the answer to a file");
+    panelMain.add(saveTheAnswerToButton,
+        new GridConstraints(8, 2, 1, 1, GridConstraints.ANCHOR_CENTER,
+            GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     buttonSaveInputInfoFile = new JButton();
     buttonSaveInputInfoFile.setHideActionText(false);
     buttonSaveInputInfoFile.setText("Save the array to a file");
     panelMain.add(buttonSaveInputInfoFile,
-        new GridConstraints(8, 1, 1, 1, GridConstraints.ANCHOR_CENTER,
+        new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_CENTER,
             GridConstraints.FILL_HORIZONTAL,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));

@@ -2,7 +2,6 @@ package ru.vsu.sc.tretyakov_d_s.Solution;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.vsu.sc.tretyakov_d_s.Solution.Solution;
 import ru.vsu.sc.tretyakov_d_s.Utils.ArrayUtils;
 
 public class SolutionTest {
@@ -13,7 +12,7 @@ public class SolutionTest {
     boolean correctResult = true;
     Solution solution = new Solution();
 
-    int[][] array = ArrayUtils.readIntArray2FromFile("src/ru/vsu/sc/tretyakov_d_s/Matrix/FirstMatrix.txt");
+    int[][] array = ArrayUtils.readIntArray2FromFile("testFiles/input01.txt");
 
     boolean currentResult = solution.checkArrayForSequence(array);
     Assert.assertEquals(correctResult, currentResult);
@@ -22,10 +21,10 @@ public class SolutionTest {
   @Test
   public void testSecond() {
 
-    boolean correctResult = false;
+    boolean correctResult = true;
     Solution solution = new Solution();
 
-    int[][] array = ArrayUtils.readIntArray2FromFile("src/ru/vsu/sc/tretyakov_d_s/Matrix/SecondMatrix.txt");
+    int[][] array = ArrayUtils.readIntArray2FromFile("testFiles/input02.txt");
 
     boolean currentResult = solution.checkArrayForSequence(array);
     Assert.assertEquals(correctResult, currentResult);
@@ -34,10 +33,10 @@ public class SolutionTest {
   @Test
   public void testThird() {
 
-    boolean correctResult = true;
+    boolean correctResult = false;
     Solution solution = new Solution();
 
-    int[][] array = ArrayUtils.readIntArray2FromFile("src/ru/vsu/sc/tretyakov_d_s/Matrix/ThirdMatrix.txt");
+    int[][] array = ArrayUtils.readIntArray2FromFile("testFiles/input03.txt");
 
     boolean currentResult = solution.checkArrayForSequence(array);
     Assert.assertEquals(correctResult, currentResult);
@@ -46,16 +45,10 @@ public class SolutionTest {
   @Test
   public void testFourth() {
 
-    boolean correctResult = true;
+    boolean correctResult = false;
     Solution solution = new Solution();
 
-    int[][] array = new int[][] {
-        {1, 2, 3, 4, 5},
-        {16, 17, 18, 19, 6},
-        {15, 24, 25, 20, 7},
-        {14, 23, 22, 21, 8},
-        {13, 12, 11, 10, 9}
-    };
+    int[][] array = ArrayUtils.readIntArray2FromFile("testFiles/input04.txt");
 
     boolean currentResult = solution.checkArrayForSequence(array);
     Assert.assertEquals(correctResult, currentResult);
@@ -67,13 +60,7 @@ public class SolutionTest {
     boolean correctResult = true;
     Solution solution = new Solution();
 
-    int[][] array = new int[][] {
-        {1, 2, 3, 4, 5},
-        {16, 17, 18, 19, 6},
-        {15, 24, 25, 20, 7},
-        {14, 23, 22, 21, 8},
-        {13, 12, 11, 10, 9}
-    };
+    int[][] array = ArrayUtils.readIntArray2FromFile("testFiles/input05.txt");
 
     boolean currentResult = solution.checkArrayForSequence(array);
     Assert.assertEquals(correctResult, currentResult);

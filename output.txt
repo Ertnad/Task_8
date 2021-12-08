@@ -1,0 +1,1 @@
+The array is an ordered sequence: true
